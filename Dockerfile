@@ -15,3 +15,4 @@ RUN apt-get update \
  && cp /tmp/phantomjs/bin/phantomjs /usr/local/bin/ \
  && apt-get -y purge build-essential g++ flex bison gperf libsqlite3-dev libfontconfig1-dev libicu-dev libssl-dev libpng-dev libjpeg-dev python libx11-dev libxext-dev git-core \
  && rm -rf /tmp/*
+RUN apt-get install -y imagemagick
