@@ -16,3 +16,7 @@ RUN apt-get update \
  && apt-get -y purge build-essential g++ flex bison gperf libsqlite3-dev libfontconfig1-dev libicu-dev libssl-dev libpng-dev libjpeg-dev libx11-dev libxext-dev git-core \
  && rm -rf /tmp/*
 RUN apt-get install -y imagemagick
+ENV SCREENSHOT_NAME=screen
+ADD opt/qnib/phantomjs/bin/screenshot.sh \
+    opt/qnib/phantomjs/bin/take_screenshot.js \
+    /opt/qnib/phantomjs/bin/
