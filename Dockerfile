@@ -1,4 +1,4 @@
-FROM qnib/d-consul
+FROM dock.bera.gaikai.org/qnib/d-consul
 
 
 RUN apt-get update \
