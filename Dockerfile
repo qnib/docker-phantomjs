@@ -20,3 +20,4 @@ ENV SCREENSHOT_NAME=screen
 ADD opt/qnib/phantomjs/bin/screenshot.sh \
     opt/qnib/phantomjs/bin/take_screenshot.js \
     /opt/qnib/phantomjs/bin/
+ADD etc/supervisord.d/screenshot.ini /etc/supervisord.d/

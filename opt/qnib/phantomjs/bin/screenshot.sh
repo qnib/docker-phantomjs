@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TS_START=$(date +%s)
+TIME_START=$(date +"%F_%H-%M-%S")
 FILE_SUFFIX=$(date +"%F_%H%M%S")
 if [ -z ${SCREENSHOT_FILE_PATH} ];then
     SCREENSHOT_FILE_PATH=/opt/qnib/phantomjs/reports
@@ -16,9 +17,9 @@ for TS in ${TS_ITER};do
     sleep 1
   done
   TIMESTAMP=$(date +"%F %H:%M:%S")
-  phantomjs /opt/qnib/phantomjs/bin/take_screenshot.js ${SCREEN_URL} ${SCREENSHOT_FILE_PATH}/${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png ${SCREENSHOT_TOKEN}
+  phantomjs /opt/qnib/phantomjs/bin/take_screenshot.js ${SCREEN_URL} ${SCREENSHOT_FILE_PATH}/${TIME_START}_${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png ${SCREENSHOT_TOKEN}
   ## Annotate TIMESTAMP
-  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png -draw "text 5,5 'PIC TAKEN: ${TIMESTAMP}'" ${SCREENSHOT_FILE_PATH}/${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png
-  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png -draw "text 5,40 'DELAY: ${TS}sec'" ${SCREENSHOT_FILE_PATH}/${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png
+  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png -draw "text 5,5 'PIC TAKEN: ${TIMESTAMP}'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png
+  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png -draw "text 5,40 'DELAY: ${TS}sec'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_${SCREENSHOT_NAME}_${FILE_SUFFIX}_${CNT}_t${TS}.png
   CNT=$(echo "${CNT}+1" |bc)
 done
