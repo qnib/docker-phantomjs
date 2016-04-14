@@ -17,9 +17,9 @@ for TS in ${TS_ITER};do
     sleep 1
   done
   TIMESTAMP=$(date +"%F %H:%M:%S")
-  phantomjs /opt/qnib/phantomjs/bin/take_screenshot.js ${SCREEN_URL} ${SCREENSHOT_FILE_PATH}/${TIME_START}_${TS}_${SCREENSHOT_NAME}.png ${SCREENSHOT_TOKEN}
+  phantomjs /opt/qnib/phantomjs/bin/take_screenshot.js ${SCREEN_URL} ${SCREENSHOT_FILE_PATH}/${TIME_START}_t${TS}_${SCREENSHOT_NAME}.png ${SCREENSHOT_TOKEN}
   ## Annotate TIMESTAMP
-  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_${TS}_${SCREENSHOT_NAME}.png -draw "text 5,5 'PIC TAKEN: ${TIMESTAMP}'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_${TS}_${SCREENSHOT_NAME}.png
-  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_${TS}_${SCREENSHOT_NAME}.png -draw "text 5,40 'DELAY: ${TS}sec'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_${TS}_${SCREENSHOT_NAME}.png
+  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_t${TS}_${SCREENSHOT_NAME}.png -draw "text 5,5 'PIC TAKEN: ${TIMESTAMP}'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_t${TS}_${SCREENSHOT_NAME}.png
+  convert -fill blue -gravity SouthEast -pointsize 30 ${SCREENSHOT_FILE_PATH}/${TIME_START}_t${TS}_${SCREENSHOT_NAME}.png -draw "text 5,40 'DELAY: ${TS}sec'" ${SCREENSHOT_FILE_PATH}/${TIME_START}_t${TS}_${SCREENSHOT_NAME}.png
   CNT=$(echo "${CNT}+1" |bc)
 done
